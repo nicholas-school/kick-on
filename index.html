@@ -31,20 +31,21 @@
       <header>
         <h1> SCOPO E ORIGINALITA' DEL PROGETTO</h1>
       </header>
-      <p>Il progetto ha le proprie radici nella consapevolezza di quanto lo sport sia importante per tutti:
-        favorisce la nascita di relazioni e lo sviluppo della capacità di stare con gli altri e, al contempo, ha
-        un’incidenza positiva sulla qualità della saluta fisica e mentale.
-        La bellezza dello sport è anche la sua potenzialità di essere uno strumento di inclusione.
-        Esistono infatti diversi sport inclusivi (pensiamo alle paralimpiadi) e tra questi vi è il calcio balilla.
-        Si tratta di un gioco potenzialmente inclusivo, perché chiunque potrebbe giocarci, ma purtroppo non tutte le
-        persone sono in grado di usarlo a causa della propria condizione.
-        La nostra sfida ha una vasta portata sociale, ed è quella di eliminare le barriere del calcetto che non
-        consentano a tutti di potersi divertire, praticando uno sport.
-        Precisiamo che esiste già lo sport paralimpico del calcetto balilla, ma lo strumento di gioco utilizzato è
-        progettato per coloro che hanno una disabilità agli arti superiori.
-        Il nostro progetto è quello di creare un calcetto automatizzato e accessibile per persone che abbiano anche una
-        difficoltà agli arti superiori, sfruttando le parti meno compromesse del loro corpo.
-        <p />
+        <p>
+          Il progetto ha le proprie radici nella consapevolezza di quanto lo sport sia importante per tutti:
+          favorisce la nascita di relazioni e lo sviluppo della capacità di stare con gli altri e, al contempo, ha
+          un’incidenza positiva sulla qualità della saluta fisica e mentale.
+          La bellezza dello sport è anche la sua potenzialità di essere uno strumento di inclusione.
+          Esistono infatti diversi sport inclusivi (pensiamo alle paralimpiadi) e tra questi vi è il calcio balilla.
+          Si tratta di un gioco potenzialmente inclusivo, perché chiunque potrebbe giocarci, ma purtroppo non tutte le
+          persone sono in grado di usarlo a causa della propria condizione.
+          La nostra sfida ha una vasta portata sociale, ed è quella di eliminare le barriere del calcetto che non
+          consentano a tutti di potersi divertire, praticando uno sport.
+          Precisiamo che esiste già lo sport paralimpico del calcetto balilla, ma lo strumento di gioco utilizzato è
+          progettato per coloro che hanno una disabilità agli arti superiori.
+          Il nostro progetto è quello di creare un calcetto automatizzato e accessibile per persone che abbiano anche una
+          difficoltà agli arti superiori, sfruttando le parti meno compromesse del loro corpo.
+        </p>
 
         <video width="100%" controls>
           <source src="video/progetto.mp4" type="video/mp4">
@@ -64,22 +65,45 @@
 
   <aside>
     <h1>LA SFIDA</h1>
-    <P>
+    <p>
       Il nostro progetto ha l’aspirazione di coinvolgere nello sport anche persone con disabilità differenti.
       Ad oggi abbiamo testato lo strumento perché sia sfruttato da persone con disabilità motoria agli arti superiori.
       L’obiettivo è di ideare un sistema di intercettazione oculo-motorio che consenta anche a giocatori con tetraplegia
       di
       partecipare.
-      <p />
+    </p>
   </aside>
 
-  <footer>
-    <p>I.S.I.S. "C. Facchinetti"
-      Via Azimonti, 5 - 21053 - Castellanza (VA) - Tel. 0331 635718 - Fax. 0331 679586 - e-mail:
-      info@isisfacchinetti.edu.it - PEC: vais01900e@pec.istruzione.it
-      area riservata - Privacy - Accessibilità - note legali - CF dell'Istituto: 81009250127</p>
-  </footer>
-
+  <div include-html="components/footer.html"></div>
+  <script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+    includeHTML();
+    </script>
 </body>
-
 </html>
