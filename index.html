@@ -2,108 +2,238 @@
 <html lang="it">
 
 <head>
-  <meta charset="utf-8">
-  <title>Kick On</title>
-  <link href="css/stile.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kick On</title>
+    <link rel="icon"
+        href="https://scontent.fmxp10-1.fna.fbcdn.net/v/t39.30808-6/300851100_202404675462067_3842006105676366686_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=JURJv08SIPwAX9Wjylf&_nc_ht=scontent.fmxp10-1.fna&oh=00_AfC7McfANRo3lDS7PGBbt__uKFVLnCgcL0Jh3S7BwDU-4w&oe=646EDEA2">
+    <link rel="stylesheet" href="stile/carosello.css">
+    <link rel="stylesheet" href="stile/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <img class="" src="img/fpicb_logo.png" />
-    <h1>KICK ON</h1>
-    <h2>UN CALCIO BALILLA PER TUTTI</h2>
-  </header>
+    <div class="navbar">
+        <div class="navbar-logo">
+            <img style="float: left;"
+                src="https://www.fpicb.it/wordpress/wp-content/uploads/2019/04/logo-fpicb-2021-01.png" alt="FPICB" />
+            <div class="titoli">
+                <h3>KICK ON</h3>
+                <h4>UN CALCIO BALILLA PER TUTTI</h4>
+            </div>
+        </div>
 
-  <nav>
-    <ul>
-      <li><a href="#">HOME</a></li>
-      <li><a href="pages/il_team.html">IL TEAM</a></li>
-      <li><a href="pages/sostenibilita.html">SOSTENIBILITA'</a></li>
-      <li><a href="pages/funzionamento.html">COME FUNZIONA</a></li>
-      <li><a href="pages/estetica.html">ESTETICA</a></li>
-      <li><a href="pages/tecnologie.html">TECNOLOGIE</a></li>
-    </ul>
-  </nav>
+        <div class="navbar-link-tasti">
+            <button onclick="toggleElements('home')">Home</button>
+            <button onclick="toggleElements('team')">Il team</button>
+            <button onclick="toggleElements('sostenibilita')">Sostenibilità</button>
+            <button onclick="toggleElements('funzionamento')">Come funziona</button>
+            <button onclick="toggleElements('estetica')">Estetica</button>
+            <button onclick="toggleElements('tecnologia')">Tecnologia</button>
+        </div>
+    </div>
 
-  <section>
+    <div id="home" class="testo-paragrafo">
+        <div class="testo-sx">
+            <div class="testo-paragrafo-titolo">
+                <h2>SCOPO E ORIGINALITÀ DEL PROGETTO</h2>
+            </div>
+            <p>
+                Il progetto ha le proprie radici nella consapevolezza di quanto lo sport sia importante per tutti:
+                favorisce la nascita di relazioni e lo sviluppo della capacità di stare con gli altri e, al contempo, ha
+                un’incidenza positiva sulla qualità della saluta fisica e mentale.
+                La bellezza dello sport è anche la sua potenzialità di essere uno strumento di inclusione.
+                Esistono infatti diversi sport inclusivi (pensiamo alle paralimpiadi) e tra questi vi è il calcio
+                balilla.
+                Si tratta di un gioco potenzialmente inclusivo, perché chiunque potrebbe giocarci, ma purtroppo non
+                tutte le
+                persone sono in grado di usarlo a causa della propria condizione.
+                La nostra sfida ha una vasta portata sociale, ed è quella di eliminare le barriere del calcetto che non
+                consentano a tutti di potersi divertire, praticando uno sport.
+                Precisiamo che esiste già lo sport paralimpico del calcetto balilla, ma lo strumento di gioco utilizzato
+                è
+                progettato per coloro che hanno una disabilità agli arti superiori.
+                Il nostro progetto è quello di creare un calcetto automatizzato e accessibile per persone che abbiano
+                anche
+                una
+                difficoltà agli arti superiori, sfruttando le parti meno compromesse del loro corpo.
+            </p>
+        </div>
+        <div class="testo-dx">
+            <video src="video/progetto.mp4" controls>
+                Video non supportato
+            </video>
+        </div>
+    </div>
 
-    <article>
-      <header>
-        <h1> SCOPO E ORIGINALITA' DEL PROGETTO</h1>
-      </header>
-        <p>
-          Il progetto ha le proprie radici nella consapevolezza di quanto lo sport sia importante per tutti:
-          favorisce la nascita di relazioni e lo sviluppo della capacità di stare con gli altri e, al contempo, ha
-          un’incidenza positiva sulla qualità della saluta fisica e mentale.
-          La bellezza dello sport è anche la sua potenzialità di essere uno strumento di inclusione.
-          Esistono infatti diversi sport inclusivi (pensiamo alle paralimpiadi) e tra questi vi è il calcio balilla.
-          Si tratta di un gioco potenzialmente inclusivo, perché chiunque potrebbe giocarci, ma purtroppo non tutte le
-          persone sono in grado di usarlo a causa della propria condizione.
-          La nostra sfida ha una vasta portata sociale, ed è quella di eliminare le barriere del calcetto che non
-          consentano a tutti di potersi divertire, praticando uno sport.
-          Precisiamo che esiste già lo sport paralimpico del calcetto balilla, ma lo strumento di gioco utilizzato è
-          progettato per coloro che hanno una disabilità agli arti superiori.
-          Il nostro progetto è quello di creare un calcetto automatizzato e accessibile per persone che abbiano anche una
-          difficoltà agli arti superiori, sfruttando le parti meno compromesse del loro corpo.
-        </p>
+    <div id="team" class="testo-paragrafo">
+        <div class="testo-sx">
+            <div class="testo-paragrafo-titolo">
+                <h2>IL TEAM</h2>
+            </div>
+            <p>
+                Il nostro team è eterogeneo perché composto da tre studenti dell’indirizzo informatico e due
+                meccatronici.
+                E’ interessante far presente che il target del progetto (il giocatore con/senza disabilità) è anche
+                l’autore del progetto stesso.
+                Infatti, due degli studenti del team hanno una disabilità fisica. Questo aspetto ci ha permesso di
+                progettare il lavoro con una consapevolezza maggiore
+                e di testare in itinere la macchina.
+            </p>
+        </div>
+        <div class="testo-dx" style="margin-right:2%;">
+            <div class="testo-paragrafo-titolo">
+                <h2>LA NOSTRA SFIDA</h2>
+            </div>
+            <p>
+                Il nostro progetto ha l’aspirazione di coinvolgere nello sport anche persone con disabilità differenti.
+                Ad oggi abbiamo testato lo strumento perché sia sfruttato da persone con disabilità motoria agli arti inferiori.
+                L’obiettivo è di ideare un sistema di intercettazione oculo-motorio che consenta anche a giocatori con tetraplegia
+                di
+                partecipare.
+            </p>
 
-        <video width="100%" controls>
-          <source src="video/progetto.mp4" type="video/mp4">
-        </video>
+        </div>
+    </div>
 
-      <footer>
-        Federazione Paralimpica Italiana Calcio Balilla
-        Via Zangrilli, 20
-        21023 Besozzo (VA)
-        Italy
-        C.F./P.I. 03253030120
-      </footer>
+    <div id="sostenibilita" class="testo-paragrafo">
+        <div class="testo-sx">
+            <div class="testo-paragrafo-titolo">
+                <h2>SOSTENIBILITÀ DEL PROGETTO<h2>
+            </div>
+            <p>
+                Il materiale utilizzato è tutto di
+                scarto: motori di giocattoli per
+                bambini, legname, catene a
+                corone di biciclette sono stati
+                utilizzati per la creazione delle
+                componenti di trasmissione del
+                movimento. Ad essere precisi, è
+                stata usata la stampa 3D per la
+                creazione di un piccolo giunto
+                stampato in PLA
+            </p>
+        </div>
+        <div class="testo-dx">
+            <div class="carousel-container" id="carosello-sostenibilita" slideIndex=-1">
+                <div class="carousel-slide">
+                    <img src="img/desgin-laterale.jpg" >
+                    <img src="img/giunto.png">
+                </div>
+                <a class="carousel-prev" onclick="changeSlide('carosello-sostenibilita', -1)">&lt;</a>
+                <a class="carousel-next" onclick="changeSlide('carosello-sostenibilita', 1)">&gt;</a>
+            </div>
 
-    </article>
+        </div>
+    </div>
 
-  </section>
+    <div id="funzionamento" class="testo-paragrafo">
+        <div class="testo-sx">
+            <div class="testo-paragrafo-titolo">
+                <h2>FUNZIONAMENTO DEL PROGETTO</h2>
+            </div>
+            <p>la stecca del biliardo è agganciata ad un pezzo meccanico viene mossa da due motori che creano un
+                movimento rotativo lineare che grazie al
+                ausilio della raspberry che gli da
+                l'input per muoversi, per decidere la velocita creiamo una proporzione usando lo spostamento del
+                piede da un frame a quello successivo.Ad oggi è
+                stata realizzata solo una stecca,
+                ma l’intento è di farne quattro.
+                Ulteriore obiettivo è quello di
+                superare il limite di velocità
+                del motore che, essendo
+                costituito da materiali riciclati,
+                tende ad essere lento.
 
-  <aside>
-    <h1>LA SFIDA</h1>
-    <p>
-      Il nostro progetto ha l’aspirazione di coinvolgere nello sport anche persone con disabilità differenti.
-      Ad oggi abbiamo testato lo strumento perché sia sfruttato da persone con disabilità motoria agli arti superiori.
-      L’obiettivo è di ideare un sistema di intercettazione oculo-motorio che consenta anche a giocatori con tetraplegia
-      di
-      partecipare.
-    </p>
-  </aside>
+                Il dispositivo è un microtavolo
+                applicato sotto al
+                calcetto sul quale andranno i vari pezzi che muoveranno le stecche. La placca ha un colore
+                nero e questo perché il fine è che
+                non si veda. Inoltre, è stata
+                costruita in modo che possa
+                essere adattabile a diversi tipi di
+                calcetto.
+            </p>
+        </div>
+        <div class="testo-dx">
+            <video src="video/spiegazione-movimento.mp4" controls>
+                Video non supportato
+            </video>
+        </div>
+    </div>
 
-  <div include-html="components/footer.html"></div>
-  <script>
-    function includeHTML() {
-      var z, i, elmnt, file, xhttp;
-      /* Loop through a collection of all HTML elements: */
-      z = document.getElementsByTagName("*");
-      for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        /*search for elements with a certain atrribute:*/
-        file = elmnt.getAttribute("include-html");
-        if (file) {
-          /* Make an HTTP request using the attribute value as the file name: */
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4) {
-              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-              /* Remove the attribute, and call this function once more: */
-              elmnt.removeAttribute("include-html");
-              includeHTML();
-            }
-          }
-          xhttp.open("GET", file, true);
-          xhttp.send();
-          /* Exit the function: */
-          return;
-        }
-      }
-    }
-    includeHTML();
-    </script>
+    <div id="estetica" class="testo-paragrafo">
+        <div class="testo-sx">
+            <div class="testo-paragrafo-titolo">
+                <h2>ESTETICA DEL PROGETTO</h2>
+            </div>
+            <p>Per il design ne abbiamo scelto uno tale da nascondere il dispositivo che fa muovere le stecche in modo
+                che nel calcetto non si veda e grazie al tavolo è facilmente trasportabile</p>
+
+        </div>
+        <div class="testo-dx">
+            <div class="carousel-container" id="carosello-estetica" slideIndex=-1">
+                <div class="carousel-slide">
+                    <img src="img/estetica-1.jpeg" >
+                    <img src="img/estetica-2.jpeg" >
+                    <img src="img/estetica-3.jpeg" >
+                </div>
+                <a class="carousel-prev" onclick="changeSlide('carosello-estetica', -1)">&lt;</a>
+                <a class="carousel-next" onclick="changeSlide('carosello-estetica', 1)">&gt;</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="tecnologia" class="testo-paragrafo">
+        <div class="testo-sx">
+            <div class="testo-paragrafo-titolo">
+                <h2>LA TECNOLOGIA DEL PROGETTO</h2>
+            </div>
+            <p>
+            <h4>Per la stecca abbiamo usato:</h4>
+            <div class="lista-elmenti">
+                <li>Rasberry (con raspicamera)</a></li>
+                <li>Scheda motori</li>
+                <li>Motori da riciclo x2</li>
+                <li>Fine corsa x2</li>
+            </div>
+
+            <h4>Come linguaggi di programmazione abbiamo usato:</h4>
+            <div class="lista-elmenti">
+                <li>Html-Css-Js</li>
+                <li>Python con le relative librerie</li>
+            </div>
+            </p>
+        </div>
+        <div class="testo-dx">
+            <div class="carousel-container" id="carosello-tecnologia" slideIndex=-1">
+                <div class="carousel-slide">
+                    <img src="img/pi4.png">
+                    <img src="img/motore.png">
+                    <img src="img/finecorsa.png">
+                    <img src="img/ponte-h.jpg">
+                </div>
+                <a class="carousel-prev" onclick="changeSlide('carosello-tecnologia', -1)">&lt;</a>
+                <a class="carousel-next" onclick="changeSlide('carosello-tecnologia', 1)">&gt;</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <pre>
+                                                                    <span style="font-weight: bold;font-size: 14px;">I.S.I.S. "C. Facchinetti"</span>
+            Tel. <a href="tel:+390331635718">0331 635718</a> - e-mail: <a href="mailto:info@isisfacchinetti.edu.it">info@isisfacchinetti.edu.it</a> - PEC: <a href="mailto:vais01900e@pec.istruzione.it">vais01900e@pec.istruzione.it</a>
+                                    <a href="https://isisfacchinetti.edu.it/privacy-informativa/">Privacy</a> - <a href="https://form.agid.gov.it/view/f9dc6295-6d0b-4813-96cf-82c2a3af59c1/">Accessibilità</a> - <a href="https://isisfacchinetti.edu.it/wp-content/doc-isis/informativa/Note-legali.pdf">Note Legali</a> - CF dell'Istituto: 81009250127</a>
+        </pre>
+    </footer>
 </body>
+<script src="script/carosello.js"></script>
+<script src="script/funzioni-tasti.js"></script>
+
 </html>
