@@ -8,7 +8,7 @@
 .carousel-slide {
     display: flex;
     width: 100%;
-    height: min(60vh, 100vh);
+    height: 40vh;
     transition: transform 0.5s ease-in-out;
 }
 
@@ -33,6 +33,7 @@
     font-weight: bold;
     font-size: 20px;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 .carousel-prev {
