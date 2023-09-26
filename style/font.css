@@ -1,0 +1,17 @@
+@font-face {
+    font-family: Redemtion;
+    src: url(../fonts/Redemtion.ttf);
+}
+
+@font-face {
+    font-family: NeonEnergyX;
+    src: url(../fonts/Neon_Energy_x.ttf);
+}
+
+.titolo {
+    font-size: 5rem;
+}
+
+.contrast-text {
+    filter: contrast(150%);
+  }

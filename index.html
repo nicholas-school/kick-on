@@ -1,236 +1,590 @@
-<!DOCTYPE html>
-<html lang="it">
+<!doctype html>
+<html lang="it" data-bs-theme="auto">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kick On</title>
-    <link rel="icon"
-        href="img/aurat.jpg">
-    <link rel="stylesheet" href="stile/carosello.css">
-    <link rel="stylesheet" href="stile/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kick - On | Aurat</title>
+    <link rel="shortcut icon" href="media/img/aurat.jpg" type="image/x-icon">
 
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/font.css">
 
-    <link href="stile/open-sans.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css">
+    <link href="framework/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="framework/plyr/plyr.css" />
+
 </head>
 
-<body>
-    <div class="navbar">
-        <div class="navbar-logo">
-            <img style="float: left;"
-                src="img/fpicb_logo.png" alt="FPICB" />
-            <div class="titoli">
-                <h3>KICK ON</h3>
-                <h4>UN CALCIO BALILLA PER TUTTI</h4>
+<body class="d-flex flex-column text-center" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
+
+    <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!--
+            <a class="navbar-brand text-light">
+                <img src="media/img/aurat.jpg" width="30" height="30" class="d-inline-block align-top"
+                    alt="Immagine del logo AURAT">
+                Kick On
+            </a>
+        -->
+
+            <a class="navbar-brand">
+                <img src="media/img/aurat.jpg" decoding="async" width="30" height="30" class="d-inline-block"
+                    alt="Immagine del logo AURAT">
+                <span class="bottom-text text-light" style="font-family: NeonEnergyX;">Kick On</span>
+            </a>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-data">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end text-center" id="navbar-data">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-light active" aria-current="page" href="#home"><i
+                                class="fa-solid fa-house"></i>
+                            Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#immagini"><i class="fa-solid fa-image"></i> immagini</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#funzionamento"><i class="fa-solid fa-gears"></i>
+                            Funzionamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#storia"><i class="fa-regular fa-timeline"></i> Storia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#tecnologia"><i class="fa-solid fa-microchip"></i>
+                            Tecnologia</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <div class="navbar-link-tasti">
-            <button onclick="toggleElements('home')">Home</button>
-            <button onclick="toggleElements('team')">Il team</button>
-            <button onclick="toggleElements('sostenibilita')">Sostenibilità</button>
-            <button onclick="toggleElements('funzionamento')">Come funziona</button>
-            <button onclick="toggleElements('estetica')">Estetica</button>
-            <button onclick="toggleElements('tecnologia')">Tecnologia</button>
+    <br class="spacer"><br class="spacer">
+
+    <!--Inizio gestore tema-->
+    <a id="themeManager" class="theme-toggle btn btn-primary rounded-pill bottom-right text-dark">
+        <i class="fas fa-adjust align-middle"></i>
+    </a>
+    <!--Fine gestore tema-->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">Suggerimenti</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                Ti ringraziamo per aver aiuto nel tuo piccolo inviando un suggerimento su come migliorare il progetto.
+                <br><br>
+                AVVERTENZE: Tutte le informazioni inviate saranno anonime e non verra salvata nessuna
+                informazione personale escluso quellecompilate nel form qua sotto
+            </div>
+
+            <div class="container mt-5">
+                <h3>Quanto ti piace il progetto?</h3>
+                <input type="range" class="custom-range" min="0" max="10" step="0.1" id="sliderPiacimento">
+                <p id="sliderPiacimentoValue">0</p>
+            </div>
+
+            <div class="container mt-5">
+                <h3>Quanto ti piace il design attuato?</h3>
+                <input type="range" class="custom-range" min="0" max="10" step="0.1" id="sliderDesign">
+                <p id="sliderDesignValue">0</p>
+            </div>
+
+
+            <div class="form-group">
+                <h3>Cosa miglioreresti?</h3>
+                <label for="testoSuggerimento">Massimo 1200 parole</label>
+                <textarea class="form-control" id="testoSuggerimento" rows="3"></textarea>
+            </div>
+
+            <br class="spacer">
+
+            <a id="inviaInformazioni" class="btn btn-primary justify-content-center">
+                Invia Il tutto <i class="fa-solid fa-paper-plane"></i>
+            </a>
         </div>
     </div>
+    <!--Fine Menu laterlae-->
 
-    <div id="home" class="testo-paragrafo">
-        <div class="testo-sx">
-            <div class="testo-paragrafo-titolo">
-                <h2>SCOPO E ORIGINALITÀ DEL PROGETTO</h2>
-            </div>
-            <p>
-                Il progetto ha le proprie radici nella consapevolezza di quanto lo sport sia importante per tutti:
-                favorisce la nascita di relazioni e lo sviluppo della capacità di stare con gli altri e, al contempo, ha
-                un’incidenza positiva sulla qualità della saluta fisica e mentale.
-                La bellezza dello sport è anche la sua potenzialità di essere uno strumento di inclusione.
-                Esistono infatti diversi sport inclusivi (pensiamo alle paralimpiadi) e tra questi vi è il calcio
-                balilla.
-                Si tratta di un gioco potenzialmente inclusivo, perché chiunque potrebbe giocarci, ma purtroppo non
-                tutte le
-                persone sono in grado di usarlo a causa della propria condizione.
-                La nostra sfida ha una vasta portata sociale, ed è quella di eliminare le barriere del calcetto che non
-                consentano a tutti di potersi divertire, praticando uno sport.
-                Precisiamo che esiste già lo sport paralimpico del calcetto balilla, ma lo strumento di gioco utilizzato
-                è
-                progettato per coloro che hanno una disabilità agli arti superiori.
-                Il nostro progetto è quello di creare un calcetto automatizzato e accessibile per persone che abbiano
-                anche
-                una
-                difficoltà agli arti superiori, sfruttando le parti meno compromesse del loro corpo.
-            </p>
-        </div>
-        <div class="testo-dx">
-            <video src="video/progetto.mp4" controls>
-                Video non supportato
-            </video>
-        </div>
-    </div>
+    <!--Inizio pagina home-->
+    <div id="home">
+        <br class="spacer">
 
-    <div id="team" class="testo-paragrafo">
-        <div class="testo-sx">
-            <div class="testo-paragrafo-titolo">
-                <h2>IL TEAM</h2>
-            </div>
-            <p>
-                Il nostro team è eterogeneo perché composto da tre studenti dell’indirizzo informatico e due
-                meccatronici.
-                E’ interessante far presente che il target del progetto (il giocatore con/senza disabilità) è anche
-                l’autore del progetto stesso.
-                Infatti, due degli studenti del team hanno una disabilità fisica. Questo aspetto ci ha permesso di
-                progettare il lavoro con una consapevolezza maggiore
-                e di testare in itinere la macchina.
-            </p>
-        </div>
-        <div class="testo-dx" style="margin-right:2%;">
-            <div class="testo-paragrafo-titolo">
-                <h2>LA NOSTRA SFIDA</h2>
-            </div>
-            <p>
-                Il nostro progetto ha l’aspirazione di coinvolgere nello sport anche persone con disabilità differenti.
-                Ad oggi abbiamo testato lo strumento perché sia sfruttato da persone con disabilità motoria agli arti inferiori.
-                L’obiettivo è di ideare un sistema di intercettazione oculo-motorio che consenta anche a giocatori con tetraplegia
-                di
-                partecipare.
-            </p>
+        <video class="custom-player" playsinline controls>
+            <source src="media/video/progetto.mp4" type="video/mp4" />
+        </video>
 
-        </div>
-    </div>
+        <br class="spacer">
 
-    <div id="sostenibilita" class="testo-paragrafo">
-        <div class="testo-sx">
-            <div class="testo-paragrafo-titolo">
-                <h2>SOSTENIBILITÀ DEL PROGETTO<h2>
-            </div>
-            <p>
-                Il materiale utilizzato è tutto di
-                scarto: motori di giocattoli per
-                bambini, legname, catene a
-                corone di biciclette sono stati
-                utilizzati per la creazione delle
-                componenti di trasmissione del
-                movimento. Ad essere precisi, è
-                stata usata la stampa 3D per la
-                creazione di un piccolo giunto
-                stampato in PLA
-            </p>
-        </div>
-        <div class="testo-dx">
-            <div class="carousel-container" id="carosello-sostenibilita" slideIndex=-1">
-                <div class="carousel-slide">
-                    <img src="img/desgin-laterale.jpg" >
-                    <img src="img/giunto.png">
+        <h4 class="text-center">Ecco una piccola partita giocata da un nostro compagno di team</h4>
+        <video class="custom-player" playsinline controls>
+            <source src="media/video/WhatsApp Video 2023-06-30 at 09.15.43.mp4" type="video/mp4" />
+        </video>
+
+        <br class="spacer">
+        
+
+        <div class="row justify-content-center style=" margin-left: 2%; margin-right: 2%;">
+            <div class="card" style="width: 15rem; margin-right: 2%; margin-bottom: 1%;">
+                <div class="card-body">
+                    <h5 class="card-title">Il nostro scopo</h5>
+                    <p class="card-text">Il nostro scopo è quello di promuovere l'inclusione e l'accessibilità per
+                        tutti. Il tutto è nato solo come sfida per aiutare un nostro compagno a gicoare a clacietto ma
+                        oggi vorremmo poter espandere la passione per il calcietto contribuendo a costruire una società
+                        più inclusiva e umana.</p>
                 </div>
-                <a class="carousel-prev" onclick="changeSlide('carosello-sostenibilita', -1)">&lt;</a>
-                <a class="carousel-next" onclick="changeSlide('carosello-sostenibilita', 1)">&gt;</a>
             </div>
 
-        </div>
-    </div>
-
-    <div id="funzionamento" class="testo-paragrafo">
-        <div class="testo-sx">
-            <div class="testo-paragrafo-titolo">
-                <h2>FUNZIONAMENTO DEL PROGETTO</h2>
-            </div>
-            <p>la stecca del biliardo è agganciata ad un pezzo meccanico viene mossa da due motori che creano un
-                movimento rotativo lineare che grazie al
-                ausilio della raspberry che gli da
-                l'input per muoversi, per decidere la velocita creiamo una proporzione usando lo spostamento del
-                piede da un frame a quello successivo.Ad oggi è
-                stata realizzata solo una stecca,
-                ma l’intento è di farne quattro.
-                Ulteriore obiettivo è quello di
-                superare il limite di velocità
-                del motore che, essendo
-                costituito da materiali riciclati,
-                tende ad essere lento.
-
-                Il dispositivo è un microtavolo
-                applicato sotto al
-                calcetto sul quale andranno i vari pezzi che muoveranno le stecche. La placca ha un colore
-                nero e questo perché il fine è che
-                non si veda. Inoltre, è stata
-                costruita in modo che possa
-                essere adattabile a diversi tipi di
-                calcetto.
-            </p>
-        </div>
-        <div class="testo-dx">
-            <video src="video/spiegazione-movimento.mp4" controls>
-                Video non supportato
-            </video>
-        </div>
-    </div>
-
-    <div id="estetica" class="testo-paragrafo">
-        <div class="testo-sx">
-            <div class="testo-paragrafo-titolo">
-                <h2>ESTETICA DEL PROGETTO</h2>
-            </div>
-            <p>Per il design ne abbiamo scelto uno tale da nascondere il dispositivo che fa muovere le stecche in modo
-                che nel calcetto non si veda e grazie anche al tavolo è facilmente trasportabile</p>
-
-        </div>
-        <div class="testo-dx">
-            <div class="carousel-container" id="carosello-estetica" slideIndex=-1">
-                <div class="carousel-slide">
-                    <img src="img/estetica-1.jpeg" >
-                    <img src="img/estetica-2.jpeg" >
-                    <img src="img/estetica-3.jpeg" >
+            <div class="card" style="width: 15rem; margin-right: 2%; margin-bottom: 1%;">
+                <div class="card-body">
+                    <h5 class="card-title">L'importanza dello sport</h5>
+                    <p class="card-text">Ma non è tutto! Il nostro progetto non solo mira a fornire opportunità di
+                        inclusione, ma anche a
+                        promuovere
+                        i benefici fisici e mentali dello sport. Sappiamo che lo sport è un potente strumento per
+                        migliorare
+                        la
+                        salute e il benessere di tutti. Attraverso la pratica sportiva, si possono sviluppare abilità
+                        motorie,
+                        aumentare la resistenza e migliorare la fiducia in se stessi.</p>
                 </div>
-                <a class="carousel-prev" onclick="changeSlide('carosello-estetica', -1)">&lt;</a>
-                <a class="carousel-next" onclick="changeSlide('carosello-estetica', 1)">&gt;</a>
             </div>
 
-        </div>
-    </div>
-
-    <div id="tecnologia" class="testo-paragrafo">
-        <div class="testo-sx">
-            <div class="testo-paragrafo-titolo">
-                <h2>LA TECNOLOGIA DEL PROGETTO</h2>
-            </div>
-            <p>
-            <h4>Per la stecca abbiamo usato:</h4>
-            <div class="lista-elmenti">
-                <li>Rasberry (con raspicamera)</a></li>
-                <li>Scheda motori</li>
-                <li>Motori da riciclo x2</li>
-                <li>Fine corsa x2</li>
-            </div>
-
-            <h4>Come linguaggi di programmazione abbiamo usato:</h4>
-            <div class="lista-elmenti">
-                <li>Html-Css-Js</li>
-                <li>Python con le relative librerie</li>
-            </div>
-            </p>
-        </div>
-        <div class="testo-dx">
-            <div class="carousel-container" id="carosello-tecnologia" slideIndex=-1">
-                <div class="carousel-slide">
-                    <img src="img/pi4.png">
-                    <img src="img/motore.png">
-                    <img src="img/finecorsa.png">
-                    <img src="img/estetica-6.jpg">
+            <div class="card" style="width: 15rem; margin-right: 2%; margin-bottom: 1%;">
+                <div class="card-body">
+                    <h5 class="card-title">Il Team</h5>
+                    <p class="card-text">Il nostro team che è riuscito a portare avanti il progetto è composto da 5
+                        persone:
+                        <li>
+                            x3 Informatici (Nicholas, Jerry, Paredeep)
+                        </li>
+                        <li>
+                            x1 Meccatronico (Usman)
+                        </li>
+                    </p>
                 </div>
-                <a class="carousel-prev" onclick="changeSlide('carosello-tecnologia', -1)">&lt;</a>
-                <a class="carousel-next" onclick="changeSlide('carosello-tecnologia', 1)">&gt;</a>
             </div>
 
+
         </div>
+
+
+    </div>
+    <!--Fine pagina home-->
+
+    <br class="spacer"><br class="spacer">
+
+    <div id="immagini">
+
+        <!-- Carousel -->
+        <div id="demo" class="carousel custom-carousel slide" data-bs-ride="carousel">
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators"></div>
+
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner w-90 h-60 bg-dark">
+                <div class="carousel-item active">
+                    <img src="media/img/estetica-1.jpeg" class="d-block w-100 h-60" decoding="async">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Il nostro calcetto</h5>
+                        <p>
+                            Siamo entusiasti di presentarvi l'intera struttura del nostro progetto di calcetto. In
+                            particolare, desideriamo sottolineare come abbiamo creato una struttura innovativa, simile a
+                            un tavolino, che può essere facilmente adattata e utilizzata in ogni partita di calcetto.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="media/img/estetica-2.jpeg" class="d-block w-100 h-60" decoding="async">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Il primo tag</h5>
+                        <p>
+                            Il primo prototipo di questo dispositivo è stato progettato per tracciare il movimento del
+                            piede del giocatore utilizzando una telecamera e la libreria OpenCV. Questa versione
+                            iniziale è stata applicata direttamente sul piede del giocatore.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="media/img/estetica-3.jpeg" class="d-block w-100 h-60" decoding="async">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Il sistema della stecca</h5>
+                        <p>
+                            Il sistema della stecca è costituito da un meccanismo che utilizza due motori DC per
+                            consentire alla stecca di muoversi e ruotare, permettendo alle persone di giocare.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="media/img/estetica-4.jpeg" class="d-block w-100 h-60" decoding="async">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Il sistema dal alto</h5>
+                        <p>
+                            Il sistema superiore del dispositivo è gestito da una catena che permette il movimento della
+                            stecca. Questa catena è collegata ai motori DC e consente di trasferire il movimento alla
+                            stecca, consentendole di muoversi e ruotare durante il gioco.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="media/img/design-laterale.jpg" class="d-block w-100 h-60" decoding="async">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>la vista dal lato</h5>
+                        <p>
+                            Dalla vista dall'alto, è possibile osservare la composizione laterale del pezzo del sistema
+                            della stecca
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="media/img/estetica-6.jpg" class="d-block w-100 h-60" decoding="async">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>La parte elettronica</h5>
+                        <p>
+                            La parte elettronica è visibile nel cablaggio della stecca, che è responsabile per il
+                            funzionamento del sistema. Il cablaggio collega i componenti elettronici, come i motori DC,
+                            ai controlli e ai sensori, consentendo il corretto funzionamento della stecca durante il
+                            gioco.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="media/img/estetica-8.jpg" class="d-block w-100 h-60" decoding="async">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>La portabiltà del progetto</h5>
+                        <p>
+                            Come si può osservare nell'immagine, la parte inferiore del progetto è mobile e facilmente
+                             rimovibile per poter essere applicata su altri calciobalilla.
+                        </p>
+                    </div>
+                </div>
+
+                <!--media/img/estetica-7.jpg-->
+                
+
+                <!--
+                <div class="carousel-item">
+                    <img src="media/img/estetica-7.jpg" class="d-block w-100 h-60">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                    </div>
+                </div>
+                -->
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+        <!-- Fine Carosello -->
     </div>
 
-    <footer>
-        <p>I.S.I.S. "C. Facchinetti"</p>
-        <p>Tel. <a href="tel:+390331635718">0331 635718</a> - e-mail: <a href="mailto:info@isisfacchinetti.edu.it">info@isisfacchinetti.edu.it</a> - PEC: <a href="mailto:vais01900e@pec.istruzione.it">vais01900e@pec.istruzione.it</a></p>
-        <p><a href="https://isisfacchinetti.edu.it/privacy-informativa/">Privacy</a> - <a href="https://form.agid.gov.it/view/f9dc6295-6d0b-4813-96cf-82c2a3af59c1/">Accessibilità</a> - <a href="https://isisfacchinetti.edu.it/wp-content/doc-isis/informativa/Note-legali.pdf">Note Legali</a> - CF dell'Istituto: 81009250127</p>        
-    </footer>
+    <div id="funzionamento">
+
+        <br class="spacer"><br class="spacer">
+
+        <h3>Il funzionamento del nostro pezzo</h3>
+
+
+        <video class="custom-player" playsinline controls>
+            <source src="media/video/spiegazione-movimento.mp4" type="video/mp4" />
+        </video>
+
+        <br class="spacer">
+
+        <div class="card" style="width: 60%; margin-left: 20%; margin-right: 20%;">
+            <div class="card-header">
+                Non via abbiamo detto una cosa!
+            </div>
+            <div class="card-body">
+                <p class="card-text">L'intero progetto è completamente ecosostenibile: tutto è realizzato utilizzando
+                    materiali riciclabili e riciclati. Persino il giunto utilizzato per il movimento è stato stampato
+                    utilizzando il PLA, un materiale altrettanto ecosostenibile. Inoltre, i legni utilizzati sono di
+                    recupero, provenienti da oggetti che la scuola stava per gettare via. L'unica eccezione sono le
+                    parti elettroniche.</p>
+            </div>
+        </div>
+
+        <br class="spacer">
+    </div>
+
+    <br class="spacer"><br class="spacer"><br class="spacer">
+
+    <div id="storia">
+
+        <h3>Un piccolo riassunto da quando abbiamo iniziato fino ad oggi</h3>
+
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="card" style="width: 20rem; margin: 1%">
+                    <img class="card-img-top h-80" decoding="async" src="media/img/pisani.png" alt="Logo FPICB">
+                    <div class="card-body">
+                        <h5 class="card-title">Il prof Pisani</h5>
+                        <p class="card-text">Tutto è iniziato grazie al prezioso aiuto del professor Pisani, che ci ha
+                            assistito e sostenuto fin dal 03/09/2023, quando abbiamo intrapreso il nostro progetto.
+                            Grazie alla sua guida, siamo riusciti a progettare un innovativo dispositivo per giocare a
+                            calcetto, che permette a chiunque di seguire le regole ufficiali di questo sport
+                            appassionante. Ma non solo: il professor Pisani è stato così gentile da metterci in contatto
+                            con l'associazione di calcetto per cui lui stesso arbitra le partite, aprendo così nuove
+                            opportunità per noi e il nostro dispositivo.
+                    </div>
+                </div>
+
+                <div class="card" style="width: 20rem; margin: 1%">
+                    <img class="card-img-top h-80" decoding="async" src="media/img/fpicb_logo.png" alt="Logo FPICB">
+                    <div class="card-body">
+                        <h5 class="card-title">La Federazione Paralimpica Calcio Balilla</h5>
+                        <p class="card-text">La federazione, dopo aver sentito dell'idea del nostro progetto, ha creduto
+                            in noi ed è stata la prima a offrire il suo aiuto. Ci hanno donato un tavolo da clacietto
+                            olimpionico dal valore di 2500€, grazie al quale siamo riusciti a partecipare alla welcome
+                            automation e iniziare la nostra avventura.
+                    </div>
+                </div>
+
+                <div class="card" style="width: 20rem; margin: 1%">
+                    <img class="card-img-top" decoding="async" src="media/img/welcome-automation.png"
+                        alt="Logo Welcome Automation">
+                    <div class="card-body">
+                        <h5 class="card-title">La Welcome Automation</h5>
+                        <p class="card-text">Attraverso la competizione Off Passion, siamo riusciti a classificarci al
+                            terzo posto, il che ci ha dato ancora più coraggio per proseguire e migliorare il nostro progetto.
+                            <br>
+                            <a href="https://www.legnanonews.com/aree-geografiche/varesotto/2023/05/27/il-calcio-balilla-funziona-con-il-movimento-dei-piedi-lidea-del-facchinetti-per-superare-le-disabilita/1090208/">I giornali parlano di noi</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <!--
+                <div class="card" style="width: 20rem; margin: 1%">
+                    <img class="card-img-top" decoding="async" src="media/img/welcome-automation.png"
+                        alt="Logo Welcome Automation">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">
+                        </p>
+                    </div>
+                </div>
+                -->
+
+            </div>
+        </div>
+
+
+        <br class="spacer">
+    </div>
+
+    <br class="spacer"><br class="spacer"><br class="spacer">
+
+    <h3>Cosa abbiamo usato per realizzare il sistema di movimento per le aste
+    </h3>
+
+    <!-- Inizio Tecnoloiga -->
+    <div id="tecnologia" class="row align-center justify-content-center">
+        <div class="card" style="width: 18rem; margin-top: 1%;">
+            <img src="media/img/tecnologia/pi4.png" decoding="async" class="card-img-top" alt="Raspberry" />
+            <div class="card-body h-40">
+                <p class="card-text">Raspberry Pi.</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem; margin-top: 1%;">
+            <img src="media/img/tecnologia/giunto.png" decoding="async" class="card-img-top" alt="Giunto" />
+            <div class="card-body h-40">
+                <p class="card-text">Giunto stampato in 3D (Agganciato all'asta di metallo).</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem; margin-top: 1%;">
+            <img src="media/img/tecnologia/motore.png" decoding="async" class="card-img-top" alt="Motori da riciclo" />
+            <div class="card-body h-40">
+                <p class="card-text">Motori da riciclo.</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem; margin-top: 1%;">
+            <img src="media/img/tecnologia/finecorsa.png" class="card-img-top" alt="Fine Corsa" />
+            <div class="card-body h-40">
+                <p class="card-text">Fine Corda.</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem; margin-top: 1%;">
+            <img src="media/img/tecnologia/scheda-motori.png" class="card-img-top" alt="Scheda Motori" />
+            <div class="card-body h-40">
+                <p class="card-text">Scheda motori.</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem; margin-top: 1%;">
+            <img src="media/img/tecnologia/legno.png" class="card-img-top" alt="Legno" />
+            <div class="card-body h-40">
+                <p class="card-text">Legname da riciclo.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Fine Tecnoloiga -->
+
+    <br class="spacer">
+
+    <!--Inizio before/after-->
+    <div class="cocoen">
+        <img src="media/img/estetica-4.jpeg" alt="" />
+        <img src="media/img/estetica-3.jpeg" alt="" />
+    </div>
+    <!--Fine before/after-->
+
+    <br class="spacer"><br class="spacer">
+
+    <h3>FAQ
+    </h3>
+
+    <div id="faq">
+        <div class="accordion" id="faq">
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne">
+                            Quali sono i benefici dell'attività fisica come il calcetto per le persone con disabilità
+                            agli arti superiori?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Partecipare al progetto di calcetto può offrire numerosi benefici alle persone con
+                            disabilità agli arti superiori. L'attività fisica regolare può migliorare la forza
+                            muscolare, la flessibilità, la coordinazione e la resistenza cardiorespiratoria. Inoltre,
+                            può contribuire a migliorare l'equilibrio, la mobilità e la salute generale. L'attività
+                            fisica può anche aiutare a ridurre lo stress, migliorare l'autostima e promuovere
+                            l'inclusione sociale.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseTwo">
+                            Avete allenatori o istruttori del progetto di calcetto?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Al momento, il nostro progetto di calcetto è seguito esclusivamente Professore Pisani.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseThree">
+                            Posso aiutare in qualche modo?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Certo, è possibile offrire un piccolo contributo nel formato preferito. Troverai i
+                            link alla fine della pagina. Inoltre, se preferisci aiutare nel tuo piccolo senza spendere
+                            denaro, c'è un tasto che ti permette di inviarci suggerimenti per il progetto. Accogliamo
+                            ogni critica costruttiva con gratitudine.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br class="spacer">
+
+
+
+        <!-- Footer -->
+        <footer class="text-center text-lg-start text-muted">
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <button class="btn btn-primary mb-4" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvas" aria-controls="offcanvas">
+                                Se hai idee dacci pure un tuo suggerimento
+                            </button>
+                            <p>
+                                Il nostro obiettivo principale è rendere lo sport accessibile a tutti, inclusi coloro
+                                che
+                                hanno limitazioni agli arti superiori. Abbiamo sviluppato un programma che offre
+                                soluzioni
+                                creative e tecnologiche per consentire a chiunque di partecipare attivamente in una
+                                partita
+                                di calcietto.
+                            </p>
+                        </div>
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">Contatti</h6>
+                            <p><i class="fas fa-home me-3 text-secondary"></i> I.S.I.S. "C. Facchinetti"</p>
+                            <p>
+                                <i class="fas fa-envelope me-3 text-secondary"></i>
+                                info@isisfacchinetti.edu.it
+                            </p>
+                            <p>
+                                <i class="fas fa-envelope me-3 text-secondary"></i>
+                                vais01900e@pec.istruzione.it
+                            </p>
+                            <p><i class="fas fa-phone me-3 text-secondary"></i> 0331 635718</p>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+        </footer>
+        <!-- Footer -->
+
+        <script src="scripts/theme.js"></script>
+        <script src="scripts/carouselhelper.js"></script>
+        <script src="scripts/inviaSuggerimento.js"></script>
+        <script src="framework/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="framework/plyr/plyr.js.js"></script>
+        <script src="framework/cocoen.js.js"></script>
+
+        <script>
+            Cocoen.parse(document.body);
+
+            let videoplayers = document.getElementsByClassName("custom-player");
+
+            for (var i = 0; i < videoplayers.length; i++) {
+                let player = new Plyr(videoplayers[i]);
+            }
+
+            /*
+            document.addEventListener('DOMContentLoaded', function () {
+                const player1 = new Plyr('#player1');
+                const player2 = new Plyr('#player2');
+                const player3 = new Plyr('#player3');
+            });
+            */
+        </script>
 </body>
-<script src="script/carosello.js"></script>
-<script src="script/funzioni-tasti.js"></script>
 
 </html>
